@@ -2,8 +2,10 @@ package uz.pdp.news_app.entity;
 
 import lombok.*;
 import uz.pdp.news_app.entity.template.AbsEntity;
+import uz.pdp.news_app.entity.enums.Category;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "article")
 @AllArgsConstructor
@@ -16,8 +18,14 @@ public class Article extends AbsEntity {
 
     private String title;
     private String articleText;
-    private Integer views;
+    private Integer views = 0;
 
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
-//    private Creator creator;
+    @OneToMany(mappedBy = "article")
+    private List<Comment> comments;
+
+    @ManyToOne
+    private User creator;
 }
