@@ -1,74 +1,91 @@
 package uz.pdp.news_app.entity;
 
-import lombok.*;
-import uz.pdp.news_app.entity.enums.Roles;
-import uz.pdp.news_app.entity.template.AbsNameEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import uz.pdp.news_app.entity.template.AbsEntity;
+import uz.pdp.news_app.enums.Permissions;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@Data
 @Entity(name = "users")
-@AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
-@ToString
-@Builder
-public class User extends AbsNameEntity {
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+//@EntityListeners(AuditingEntityListener.class)
+public class User extends AbsEntity implements UserDetails {
 
-    @Enumerated(EnumType.STRING)
-    private Roles role = Roles.USER;
+    @Column(nullable = false)
+    private String fullName;
 
-    private String email, phone;
-    private boolean active = true;
-/*
+    @Column(unique = true, nullable = false)
+    private String username;
+
+    @Column(nullable = false)
     private String password;
-    private boolean accountNonExpired = true; //accountni vaqti o'tmaganmi?
-    private boolean accountNonLocked = true; //bloklanmaganmi?
-    private boolean credentialsNonExpired = true; //parol o'znikimi
-    private boolean enabled = true; //tizimga kimdir kirganda undan foydalanish huquqi
 
-    //bu tizimdan foydalanuvchini yo permissionlari bo'ladi yoki rollari ro'yxati
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-        for (Role role : this.roles) {
-            grantedAuthorityList.add(new SimpleGrantedAuthority(role.getName()));
+        List<Permissions> permissions = this.role.getPermissions();
+        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        for (Permissions permission : permissions) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(permission.name()));
         }
-        return grantedAuthorityList;
-    }
-
-    @Override
-    public String getPassword() {
-        return this.password;
-    }
-
-    //ixtiyoriy uniq bo'ladigan ustunni berish kk login
-    @Override
-    public String getUsername() {
-        return this.phone;
+        return grantedAuthorities;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return this.accountNonExpired;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return this.accountNonLocked;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return this.credentialsNonExpired;
+        return true;
     }
 
-    @Override
-    public boolean isEnabled() {
-        return this.enabled;
+    private boolean enabled;
+//
+//    private boolean accountNonExpired = true;
+//
+//    private boolean accountNonLocked = true;
+//
+//    private boolean credentialsNonExpired = true;
+//
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        List<Permissions> permissions = this.role.getPermissions();
+//        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+//        for (Permissions permission : permissions) {
+//            grantedAuthorities.add(new SimpleGrantedAuthority(permission.name()));
+//        }
+//        return grantedAuthorities;
+//    }
+
+    public User(String fullName, String username, String password, Role role, boolean enabled) {
+        this.fullName = fullName;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.enabled = enabled;
     }
-*/
+
 }
