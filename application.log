@@ -1,0 +1,69 @@
+2022-07-28 10:01:19.345 ERROR 7804 --- [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtFilter' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\security\JwtFilter.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authService' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\service\AuthService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'authService': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2022-07-28 10:01:19.444 ERROR 7804 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   jwtFilter defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\security\JwtFilter.class]
+┌─────┐
+|  authService defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\service\AuthService.class]
+↑     ↓
+|  securityConfig defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\config\SecurityConfig.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-07-28 10:16:30.631 ERROR 11764 --- [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtFilter' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\security\JwtFilter.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authService' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\service\AuthService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'authService': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2022-07-28 10:16:30.687 ERROR 11764 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   jwtFilter defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\security\JwtFilter.class]
+┌─────┐
+|  authService defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\service\AuthService.class]
+↑     ↓
+|  securityConfig defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\config\SecurityConfig.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2022-07-28 17:24:39.527 ERROR 11900 --- [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtFilter' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\security\JwtFilter.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authService' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\service\AuthService.class]: Unsatisfied dependency expressed through constructor parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig' defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\config\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'authService': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2022-07-28 17:24:39.600 ERROR 11900 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   jwtFilter defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\security\JwtFilter.class]
+┌─────┐
+|  authService defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\service\AuthService.class]
+↑     ↓
+|  securityConfig defined in file [C:\Users\User\IdeaProjects\Modul 5\news_app\target\classes\uz\pdp\news_app\config\SecurityConfig.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+

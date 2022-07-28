@@ -1,7 +1,6 @@
 package uz.pdp.news_app.enums;
 
 public enum Permissions {
-
     ADD_USER,
     EDIT_USER,
     DELETE_USER,

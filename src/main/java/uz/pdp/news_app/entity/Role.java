@@ -22,7 +22,6 @@ public class Role extends AbsEntity {
     @Column(unique = true, nullable = false)
     private String name; // ADMIN, USER ...
 
-
     @Enumerated(EnumType.STRING)
     @ElementCollection
     private List<Permissions> permissions;
