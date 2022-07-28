@@ -1,9 +1,9 @@
 package uz.pdp.news_app.payload;
 
-import com.example.newsapp.enums.Permissions;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uz.pdp.news_app.enums.Permissions;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;

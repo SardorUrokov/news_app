@@ -19,7 +19,6 @@ public class RoleController {
 
     private final RoleService roleService;
 
-
     @PreAuthorize(value = "hasAuthority('ADD_ROLE')")
     @PostMapping
     public HttpEntity<?> addRole(@Valid @RequestBody RoleDTO roleDTO) {

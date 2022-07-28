@@ -13,6 +13,7 @@ import uz.pdp.news_app.payload.UserDTO;
 import uz.pdp.news_app.repository.RoleRepository;
 import uz.pdp.news_app.repository.UserRepository;
 
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -37,7 +38,7 @@ public class UserService {
         user.setFullName(userDTO.getFullName());
         user.setUsername(userDTO.getUserName());
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setRole((Role) response.getObject());
+        user.setRoles(Collections.singleton((Role)response.getObject()));
         user.setEnabled(userDTO.getEnabled());
 
         userRepository.save(user);
@@ -60,7 +61,8 @@ public class UserService {
         user.setFullName(userDTO.getFullName());
         user.setUsername(userDTO.getUserName());
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setRole((Role) response.getObject());
+        user.setRoles(Collections.singleton((Role)response.getObject()));
+
         user.setEnabled(userDTO.getEnabled());
 
         userRepository.save(user);

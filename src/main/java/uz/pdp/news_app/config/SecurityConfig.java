@@ -24,7 +24,6 @@ import uz.pdp.news_app.security.JwtFilter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthService authService;
-
     private final JwtFilter jwtFilter;
 
     @Bean

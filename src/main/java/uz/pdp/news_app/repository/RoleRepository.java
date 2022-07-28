@@ -1,7 +1,7 @@
 package uz.pdp.news_app.repository;
 
-import com.example.newsapp.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import uz.pdp.news_app.entity.Role;
 
 import java.util.Optional;
 

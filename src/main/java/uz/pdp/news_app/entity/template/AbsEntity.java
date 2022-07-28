@@ -5,10 +5,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.LastModifiedBy;
+import uz.pdp.news_app.entity.User;
 
 import javax.persistence.*;
-import java.security.Timestamp;
 import java.util.Date;
 import java.util.UUID;
 
@@ -27,9 +26,12 @@ public class AbsEntity {
 
     //security ishlatiladigan
     //kim qo'shdi user uuid
+
     @CreatedBy
-    @Column(nullable = false, name = "created_by")
-    private UUID createdBy;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "created_by")
+    private User createdBy;
+
 //    //kim o'zgartirdi
 //    @LastModifiedBy
 //    @Column(nullable = false)

@@ -15,9 +15,7 @@ import uz.pdp.news_app.repository.PostRepository;
 @RequestMapping("/api/post")
 public class PostController {
 
-
     final PostRepository postRepository;
-
     final PostService postService;
 
     @CheckPermission("ADD_POST")

@@ -20,9 +20,11 @@ public class Comments extends AbsEntity {
     @Column(nullable = false, columnDefinition = "text")
     private String text;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.REFRESH)
-    private Post post;
+    @ManyToOne
+    private User user;
 
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+    private Post post;
 
 }

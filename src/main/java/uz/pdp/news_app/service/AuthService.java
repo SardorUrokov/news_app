@@ -13,6 +13,8 @@ import uz.pdp.news_app.payload.RegisterDTO;
 import uz.pdp.news_app.repository.RoleRepository;
 import uz.pdp.news_app.repository.UserRepository;
 
+import java.util.Collections;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService implements UserDetailsService {
@@ -34,7 +36,7 @@ public class AuthService implements UserDetailsService {
         user.setFullName(registerDTO.getFullName());
         user.setUsername(registerDTO.getUserName());
         user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-        user.setRole(roleRepository.findByName(AppConstants.USER).orElseThrow(() -> new RescuersNotFoundEx("role", "name", AppConstants.USER)));
+        user.setRoles(Collections.singleton(roleRepository.findByName(AppConstants.USER).orElseThrow(() -> new RescuersNotFoundEx("role", "name", AppConstants.USER))));
         user.setEnabled(true);
 
         userRepository.save(user);

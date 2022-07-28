@@ -18,12 +18,11 @@ import java.util.Optional;
 public class CommentService {
 
     final CommentRepository commentRepository;
-
     final PostRepository postRepository;
 
     public ApiResponse add(CommentDTO commentDTO) {
         Optional<Post> optionalPost = postRepository.findById(commentDTO.getPostId());
-        if (!optionalPost.isPresent()) return new ApiResponse("Post not found", false);
+        if (optionalPost.isEmpty()) return new ApiResponse("Post not found", false);
 
         Comments comments = new Comments();
         comments.setText(commentDTO.getText());
@@ -36,13 +35,13 @@ public class CommentService {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<Comments> optionalComment = commentRepository.findById(id);
 
-        if (!optionalComment.isPresent()) return new ApiResponse("Comment not found!", false);
+        if (optionalComment.isEmpty()) return new ApiResponse("Comment not found!", false);
 
         if (!optionalComment.get().getCreatedBy().getUsername().equals(user.getUsername()))
-            return new ApiResponse("you can edit only your comments!", false);
+            return new ApiResponse("You can edit only your comments!", false);
 
         Optional<Post> postOptional = postRepository.findById(commentDTO.getPostId());
-        if (!postOptional.isPresent()) return new ApiResponse("Post not found!", false);
+        if (postOptional.isEmpty()) return new ApiResponse("Post not found!", false);
 
         Comments comment = optionalComment.get();
         comment.setText(commentDTO.getText());
@@ -61,7 +60,7 @@ public class CommentService {
             return new ApiResponse("Comment not found!", false);
 
         if (!optionalComment.get().getCreatedBy().getUsername().equals(user.getUsername()))
-            return new ApiResponse("You can delete only your comment", false);
+            return new ApiResponse("You can delete only your comments!", false);
 
         commentRepository.deleteById(id);
         return new ApiResponse("Deleted!", true);
@@ -71,7 +70,7 @@ public class CommentService {
 
         Optional<Comments> optionalComment = commentRepository.findById(id);
 
-        if (!optionalComment.isPresent())
+        if (optionalComment.isEmpty())
             return new ApiResponse("Comment not found!", false);
 
         commentRepository.deleteById(id);

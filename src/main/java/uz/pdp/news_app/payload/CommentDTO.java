@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CommentDTO {
 
-    @NotNull(message = "text Required")
+    @NotNull(message = "Text Required")
     private String text;
 
     @NotNull(message = "id Required")

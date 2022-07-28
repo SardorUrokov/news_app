@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import uz.pdp.news_app.entity.Role;
 import uz.pdp.news_app.service.AuthService;
 import uz.pdp.news_app.entity.User;
 import uz.pdp.news_app.payload.ApiResponse;
@@ -38,7 +39,7 @@ public class AuthController {
     public HttpEntity<?> loginUser(@Valid @RequestBody LoginDTO loginDTO) {
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getUserName(), loginDTO.getPassword()));
         User principal = (User) authenticate.getPrincipal();
-        String token = jwtProvider.generateToken(principal.getUsername(), principal.getRole());
+        String token = jwtProvider.generateToken(principal.getUsername(), (Role) principal.getRoles());
         return ResponseEntity.ok(token);
     }
 

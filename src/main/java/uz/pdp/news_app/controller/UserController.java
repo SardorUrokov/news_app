@@ -19,9 +19,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/user")
 public class UserController {
 
-
     final UserRepository userRepository;
-
     final UserService userService;
 
     @CheckPermission("ADD_USER")

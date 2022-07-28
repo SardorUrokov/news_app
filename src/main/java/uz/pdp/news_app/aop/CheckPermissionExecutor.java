@@ -1,12 +1,12 @@
 package uz.pdp.news_app.aop;
 
-import com.example.newsapp.entity.User;
-import com.example.newsapp.exceptions.ForBiddenEx;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import uz.pdp.news_app.entity.User;
+import uz.pdp.news_app.exceptions.ForBiddenEx;
 
 @Component
 @Aspect

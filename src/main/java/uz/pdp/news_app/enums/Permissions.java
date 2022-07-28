@@ -21,5 +21,8 @@ public enum Permissions {
     EDIT_COMMENT,
     EDIT_MY_COMMENT,
     DELETE_COMMENT,
-    DELETE_MY_COMMENT
+    DELETE_MY_COMMENT,
+    READ_COMMENT,
+    GET_COMMENTS
+
 }

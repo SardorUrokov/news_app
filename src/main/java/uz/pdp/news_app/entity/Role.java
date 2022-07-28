@@ -1,12 +1,12 @@
 package uz.pdp.news_app.entity;
 
-import com.example.newsapp.entity.template.AbsEntity;
-import com.example.newsapp.enums.Permissions;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import uz.pdp.news_app.entity.template.AbsEntity;
+import uz.pdp.news_app.enums.Permissions;
 
 import javax.persistence.*;
 import java.util.List;

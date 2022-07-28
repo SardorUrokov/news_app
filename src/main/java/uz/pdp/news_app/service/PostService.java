@@ -1,13 +1,12 @@
 package uz.pdp.news_app.service;
 
-import com.example.newsapp.entity.Post;
-import com.example.newsapp.exceptions.RescuersNotFoundEx;
-import com.example.newsapp.payload.ApiResponse;
-import com.example.newsapp.payload.PostDTO;
-import com.example.newsapp.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import uz.pdp.news_app.entity.Post;
+import uz.pdp.news_app.exceptions.RescuersNotFoundEx;
+import uz.pdp.news_app.payload.ApiResponse;
+import uz.pdp.news_app.payload.PostDTO;
+import uz.pdp.news_app.repository.PostRepository;
 import java.util.Optional;
 
 @Service
@@ -21,7 +20,7 @@ public class PostService {
         post.setText(postDTO.getText());
         post.setTitle(postDTO.getTitle());
         postRepository.save(post); // save
-        post.setUrl("http://localhost:80/api/post/" + post.getId()); //  add url + id
+        post.setUrl("http://localhost:80/api/post/" + post.getId()); //  add url+post.id for set url to post
         postRepository.save(post); // again save
         return new ApiResponse("Added", true);
     }
@@ -49,6 +48,6 @@ public class PostService {
         boolean b = postRepository.existsById(id);
         if (!b) return new ApiResponse("Not found", false);
         postRepository.deleteById(id);
-        return new ApiResponse("Deletd", true);
+        return new ApiResponse("Deleted!", true);
     }
 }

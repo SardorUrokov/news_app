@@ -1,12 +1,12 @@
 package uz.pdp.news_app.service;
 
-import com.example.newsapp.entity.Role;
-import com.example.newsapp.exceptions.RescuersNotFoundEx;
-import com.example.newsapp.payload.ApiResponse;
-import com.example.newsapp.payload.RoleDTO;
-import com.example.newsapp.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import uz.pdp.news_app.entity.Role;
+import uz.pdp.news_app.exceptions.RescuersNotFoundEx;
+import uz.pdp.news_app.payload.ApiResponse;
+import uz.pdp.news_app.payload.RoleDTO;
+import uz.pdp.news_app.repository.RoleRepository;
 
 import java.util.Optional;
 
@@ -30,7 +30,9 @@ public class RoleService {
 
     public ApiResponse editRole(Long id, RoleDTO roleDTO) {
         Optional<Role> optionalRole = roleRepository.findById(id);
-        if (!optionalRole.isPresent()) return new ApiResponse("User not found", false);
+        if (optionalRole.isEmpty())
+            return new ApiResponse("User not found", false);
+
         Role role = optionalRole.get();
         role.setDescription(roleDTO.getDescription());
         role.setName(roleDTO.getName());
@@ -43,12 +45,16 @@ public class RoleService {
         boolean b = roleRepository.existsById(id);
         if (!b) return new ApiResponse("Role not found", false);
         roleRepository.deleteById(id);
-        return new ApiResponse("Deleted", true);
+        return new ApiResponse("Deleted!", true);
     }
 
     public ApiResponse getById(Long id) {
         Optional<Role> optionalRole = roleRepository.findById(id);
-        return optionalRole.map(role -> new ApiResponse("Found", true, role)).orElseThrow(() -> new RescuersNotFoundEx("Role", "id", id));
+        return optionalRole
+                .map(role ->
+                        new ApiResponse("Found", true, role))
+                .orElseThrow(() ->
+                        new RescuersNotFoundEx("Role", "id", id));
     }
 
     public ApiResponse getAll() {
